@@ -55,11 +55,18 @@
   :draw draw
   :size [400 400])
 
-(defn add-form
-  [form]
+(defn move-form
+  [form sx sy]
 
-  (swap! board #(s/union % (form life/forms)))
-  (reset! n-steps 1))
+  (set (map (fn [[x y]] [(+ x sx) (+ y sy)]) form)))
+
+(defn add-form
+  ([form] (add-form form [0 0]))
+  ([form [shift-x shift-y]]
+     (let [nform (move-form (form life/forms) shift-x shift-y)]
+       (swap! board #(s/union % nform))
+       (reset! n-steps 1)
+       [form [shift-x shift-y] nform])))
 
 (defn pause
   []
