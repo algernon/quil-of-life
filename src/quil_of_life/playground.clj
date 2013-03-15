@@ -11,3 +11,12 @@
 (g/add-form :beehive)
 (g/add-form :boat)
 (g/add-form :loaf)
+(g/add-form :beacon)
+(g/add-form :gosper-glider-gun)
+(g/add-form :block-laying-switch-engine [10 10])
+
+(g/add-form :oscillator [2 0])
+(g/add-form :lightweight-space-ship [15 15])
+
+(g/add-form (rand-nth (keys life/forms))
+            [(rand-int 40) (rand-int 40)])
