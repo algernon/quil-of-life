@@ -5,7 +5,7 @@
 (g/clear)
 
 (g/toggle)
-(g/add-form :lwss)
+(g/add-form :lightweight-space-ship)
 (g/add-form :glider)
 (g/add-form :oscillator)
 (g/add-form :beehive)
