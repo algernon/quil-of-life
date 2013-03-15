@@ -58,9 +58,7 @@
 (defn add-form
   [form]
 
-  (if (= (type form) clojure.lang.Keyword)
-    (swap! board #(s/union % (form life/forms)))
-    (swap! board #(s/union % form)))
+  (swap! board #(s/union % (form life/forms)))
   (reset! n-steps 1))
 
 (defn pause
