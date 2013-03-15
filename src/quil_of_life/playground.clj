@@ -1,6 +1,9 @@
 (ns quil-of-life.playground
   (:require [quil-of-life.life :as life]
-            [quil-of-life.quil :as g]))
+            [quil-of-life.quil :as g]
+            [quil-of-life.utils :as u]))
+
+;; http://www.argentum.freeserve.co.uk/lex.htm
 
 (g/clear)
 
