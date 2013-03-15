@@ -60,13 +60,18 @@
 
   (set (map (fn [[x y]] [(+ x sx) (+ y sy)]) form)))
 
+(defn add-custom-form
+  ([name form] (add-custom-form name form [0 0]))
+  ([name form [shift-x shift-y]]
+   (let [nform (move-form form shift-x shift-y)]
+     (swap! board #(s/union % nform))
+     (reset! n-steps 1)
+     [name [shift-x shift-y] nform])))
+
 (defn add-form
-  ([form] (add-form form [0 0]))
-  ([form [shift-x shift-y]]
-     (let [nform (move-form (form life/forms) shift-x shift-y)]
-       (swap! board #(s/union % nform))
-       (reset! n-steps 1)
-       [form [shift-x shift-y] nform])))
+  ([name] (add-form name [0 0]))
+  ([name offs]
+   (add-custom-form name (get life/forms name) offs)))
 
 (defn pause
   []
